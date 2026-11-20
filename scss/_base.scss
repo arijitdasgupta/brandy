@@ -1,0 +1,268 @@
+@use "tokens" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(1100px 520px at 85% -10%, color-mix(in srgb, var(--color-highlight) 40%, transparent), transparent 65%),
+    var(--color-background);
+  background-attachment: fixed;
+  color: var(--color-text);
+  font-family: $font-serif;
+  font-size: $font-size-100;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+  scrollbar-gutter: stable both-edges;
+  scrollbar-color: var(--color-line-strong) transparent;
+
+  @media screen and (min-width: 50em) {
+    font-size: 20px;
+  }
+}
+
+// Header / Nav — sticky, blurred bar across the top
+header.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: $spacing-100 0;
+  background: color-mix(in srgb, var(--color-background) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-line);
+
+  // Same centered column as <main>, so the bar text aligns with the page margin
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing-150;
+    width: min(100%, $column-width);
+    margin: 0 auto;
+    padding: 0 $spacing-100;
+
+    @media screen and (min-width: 50em) {
+      gap: $spacing-200;
+      padding: 0 $spacing-200;
+    }
+  }
+
+  .header-nav {
+    display: flex;
+    gap: $spacing-150;
+    align-items: center;
+
+    @media screen and (min-width: 50em) {
+      gap: $spacing-200;
+    }
+  }
+
+  .plain-link {
+    color: var(--color-text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.82em;
+    font-family: $font-mono;
+
+    &:visited {
+      color: var(--color-text);
+    }
+
+    &:hover {
+      color: var(--color-accent);
+      background: none;
+      border-radius: 0;
+    }
+  }
+
+  .brand {
+    font-family: $font-heading;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.05em;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    margin-right: auto;
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-25;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    .theme-icon {
+      display: none;
+    }
+  }
+
+  .theme-icon-light {
+    [data-theme="light"] & {
+      display: block;
+    }
+  }
+
+  .theme-icon-dark {
+    [data-theme="dark"] & {
+      display: block;
+    }
+  }
+}
+
+main {
+  width: min(100%, $column-width);
+  margin: 0 auto;
+  padding: $spacing-100;
+
+  @media screen and (min-width: 50em) {
+    padding: $spacing-200;
+  }
+}
+
+// Wide enough to hold the sticky post-nav sidebar alongside the column
+@media (min-width: 1280px) {
+  main,
+  header.header .header-inner {
+    width: min(100%, calc(#{$column-width} + 16rem));
+  }
+}
+
+footer {
+  width: min(100%, $column-width);
+  margin: $spacing-400 auto 0;
+  padding: $spacing-100;
+  border-top: 1px solid var(--color-line);
+  font-family: $font-mono;
+  font-size: $font-size-50;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-subtext);
+  text-align: center;
+}
+
+// Typography — headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  color: var(--color-heading);
+  margin: $spacing-100 0 $spacing-50;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.1rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: $spacing-200 0 $spacing-100;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: $spacing-200;
+}
+
+h3, h4, h5, h6 {
+  font-size: $font-size-150;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+// Links
+a, a:link {
+  color: var(--color-link);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-line-strong);
+  text-underline-offset: 3px;
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+
+a:is(:hover, :visited:hover) {
+  color: var(--color-accent);
+  background: none;
+  text-decoration-color: var(--color-accent);
+  border-radius: 0;
+}
+
+a:visited {
+  color: var(--color-link);
+}
+
+// Focus
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+// Paragraphs
+p {
+  margin: $spacing-100 0;
+  text-wrap: pretty;
+}
+
+// Lists
+ul {
+  padding: 0;
+  margin: $spacing-100 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin-left: $spacing-150;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: calc(#{$spacing-150} * -1);
+      top: 0.4em;
+      color: var(--color-accent);
+    }
+  }
+}
+
+ol {
+  margin: $spacing-100 0;
+  padding-left: $spacing-150;
+
+  li {
+    margin-bottom: $spacing-50;
+  }
+}
+
+// Selection
+*::selection {
+  background-color: var(--color-mark);
+  color: var(--color-background);
+}
+
+// HR
+hr {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  width: $spacing-200;
+  margin: $spacing-200 auto;
+}
+
+@media (max-width: 480px) {
+  header.header {
+    padding: $spacing-100;
+  }
+}

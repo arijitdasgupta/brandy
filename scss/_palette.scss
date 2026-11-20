@@ -1,0 +1,27 @@
+// Brand palette and derived light/dark colors.
+// Every value is !default: consumers may override via
+//   @use "brandy/scss/palette" with ($paper: #fafafa);
+// before loading the rest of brandy.
+
+// Palette
+$cobalt-blue: #1446a0 !default;
+$razzmatazz: #db3069 !default;
+$royal-gold: #f5d547 !default;
+$beige: #ebebd3 !default;
+$gunmetal: #3c3c3b !default;
+
+// Derived (light)
+$paper: #ffffff !default;
+$mist: #f4f3ee !default;
+$royal-gold-soft: #e8d98a !default;
+$smoke: #6f6d62 !default;
+$ash-light: #8a8778 !default;
+
+// Derived (dark)
+$graphite: #2a2a2a !default;
+$graphite-light: #353535 !default;
+$graphite-lighter: #424242 !default;
+$bone: #ece9da !default;
+$bone-bright: #f7f4e8 !default;
+$ash: #a3a093 !default;
+$ash-dark: #7c7a6f !default;

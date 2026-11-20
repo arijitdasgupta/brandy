@@ -1,0 +1,15 @@
+// brandy — pure Sass theme framework entry point.
+//
+// Consumer entry file:
+//   @use "brandy";            // with --load-path=<repo>/scss (CLI) or loadPaths (JS API)
+// Optionally configure tokens first:
+//   @use "palette" with ($paper: #fafafa);
+//   @use "brandy";
+
+@use "theme";
+@use "base";
+@use "nav";
+@use "post-list";
+@use "post";
+@use "tags";
+@use "lightbox";

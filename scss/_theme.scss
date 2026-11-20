@@ -1,0 +1,89 @@
+@use "tokens" as *;
+
+// Theme emission: maps palette tokens to CSS custom properties.
+// Three layers, lowest to highest priority:
+//   1. :root light defaults
+//   2. @media (prefers-color-scheme: dark) — automatic dark mode, works with no JS at all
+//   3. [data-theme="dark"] / [data-theme="light"] on <html> — explicit override;
+//      consumers with a toggle button only need JS that flips this attribute
+
+@mixin brandy-light {
+  color-scheme: light;
+
+  // Page background
+  --color-background: #{$paper};
+  // Background of elements that need to be distinct from the background
+  --color-surface: #{$mist};
+  // Background of elements that need to be even more distinct
+  --color-highlight: #{$royal-gold-soft};
+
+  // Default text color
+  --color-text: #{$gunmetal};
+  // Default heading color
+  --color-heading: #{$gunmetal};
+  // De-emphasized text
+  --color-subtext: #{$smoke};
+  // Even more de-emphasized text
+  --color-subsubtext: #{$ash-light};
+
+  // Accent for links, hovers, focus rings
+  --color-accent: #{$cobalt-blue};
+
+  // Link text color
+  --color-link: #{$gunmetal};
+  // Link text hover background color
+  --color-link-highlight: #{$gunmetal};
+
+  // Mark colors
+  --color-mark: #{$razzmatazz};
+  --color-mark-bright: #{$cobalt-blue};
+}
+
+@mixin brandy-dark {
+  color-scheme: dark;
+
+  --color-background: #{$graphite};
+  --color-surface: #{$graphite-light};
+  --color-highlight: #{$graphite-lighter};
+
+  --color-text: #{$bone};
+  --color-heading: #{$bone-bright};
+  --color-subtext: #{$ash};
+  --color-subsubtext: #{$ash-dark};
+
+  --color-accent: #{$royal-gold};
+
+  --color-link: #{$bone};
+  --color-link-highlight: #{$bone};
+
+  --color-mark: #{$razzmatazz};
+  --color-mark-bright: #{$royal-gold};
+}
+
+:root {
+  @include brandy-light;
+
+  // Lines adapt to the active theme via color-mix
+  --color-line: color-mix(in srgb, var(--color-text) 16%, transparent);
+  --color-line-strong: color-mix(in srgb, var(--color-text) 38%, transparent);
+
+  // Radii & shadows
+  --radius-sm: 4px;
+  --radius: 12px;
+  --shadow: 0 2px 14px color-mix(in srgb, var(--color-text) 14%, transparent);
+  --shadow-lg: 0 10px 34px color-mix(in srgb, var(--color-text) 18%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include brandy-dark;
+  }
+}
+
+[data-theme="dark"] {
+  @include brandy-dark;
+}
+
+[data-theme="light"] {
+  @include brandy-light;
+}

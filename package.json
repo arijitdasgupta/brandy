@@ -1,0 +1,13 @@
+{
+  "name": "brandy",
+  "version": "0.1.0",
+  "description": "Pure Sass theme framework: design tokens, CSS-only dark mode, component classes. No JavaScript.",
+  "private": true,
+  "scripts": {
+    "check": "bun run examples/compile.ts",
+    "compile": "sass --no-source-map scss/brandy.scss"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3"
+  }
+}

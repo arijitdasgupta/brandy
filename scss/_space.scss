@@ -1,0 +1,12 @@
+// Spacing and layout tokens. All !default, overridable via `@use "brandy/scss/space" with (...)`.
+
+// Spacing
+$spacing-25: 0.25rem !default;
+$spacing-50: 0.5rem !default;
+$spacing-100: 1rem !default;
+$spacing-150: 1.5rem !default;
+$spacing-200: 2rem !default;
+$spacing-400: 4rem !default;
+
+// Layout
+$column-width: 36em !default;

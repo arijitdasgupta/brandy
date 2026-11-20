@@ -1,0 +1,5 @@
+// Sample consumer entry: compile with
+//   bun run check        (writes examples/sample.css via examples/compile.ts)
+// or directly:
+//   bunx sass --no-source-map examples/sample.scss examples/sample.css
+@use "../scss/brandy";

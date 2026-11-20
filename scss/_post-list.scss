@@ -1,0 +1,140 @@
+@use "tokens" as *;
+
+.post-list {
+  margin: $spacing-100 0;
+}
+
+.post-entry {
+  padding: $spacing-200 0;
+  border-bottom: 1px solid var(--color-line);
+
+  &:first-child {
+    padding-top: $spacing-100;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin-bottom: $spacing-50;
+
+    a {
+      color: var(--color-heading);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  & > time {
+    font-family: $font-mono;
+    font-size: $font-size-50;
+    color: var(--color-subtext);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: $spacing-150;
+    padding-bottom: $spacing-100;
+    border-bottom: 1px solid var(--color-line);
+  }
+}
+
+.post-entry-content {
+  font-size: $font-size-100;
+  line-height: 1.7;
+
+  p {
+    margin-bottom: $spacing-100;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: $spacing-150 0;
+    display: block;
+  }
+
+  blockquote {
+    padding: $spacing-50 $spacing-100 $spacing-50 $spacing-150;
+    margin: $spacing-100 0;
+    color: var(--color-subtext);
+    font-style: italic;
+    position: relative;
+    background: var(--color-surface);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+
+    p {
+      margin-bottom: $spacing-50;
+
+      &::before {
+        content: ">";
+        position: absolute;
+        left: $spacing-50;
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  pre {
+    background: var(--color-surface);
+    padding: $spacing-100;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: $spacing-100 0;
+    font-family: $font-mono;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  code {
+    font-family: $font-mono;
+    font-size: 0.85em;
+    background: var(--color-highlight);
+    padding: 0 $spacing-50;
+    border-radius: var(--radius-sm);
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+  }
+
+  ul, ol {
+    margin: $spacing-100 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-line);
+    width: $spacing-200;
+    margin: $spacing-200 auto;
+  }
+
+  figure {
+    margin: $spacing-150 0;
+
+    img {
+      width: 100%;
+    }
+
+    figcaption {
+      font-size: $font-size-100;
+      color: var(--color-subtext);
+      font-style: italic;
+      margin-top: $spacing-50;
+    }
+  }
+}

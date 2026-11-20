@@ -1,0 +1,14 @@
+// Type tokens. All !default, overridable via `@use "brandy/scss/type" with (...)`.
+
+// Fonts
+$font-serif: "Newsreader", Georgia, serif !default;
+$font-heading: "Fraunces", "Newsreader", Georgia, serif !default;
+$font-mono: "JetBrains Mono", ui-monospace, monospace !default;
+
+// Font sizes
+$font-size-base: 18px !default;
+$font-size-50: 11px !default;
+$font-size-100: $font-size-base !default;
+$font-size-150: $font-size-base * 1.25 !default;
+$font-size-200: $font-size-base * 1.5 !default;
+$font-size-300: $font-size-base * 2 !default;

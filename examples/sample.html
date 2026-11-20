@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- brandy sample page. Dark mode needs no JS: it follows prefers-color-scheme.
+     To force a theme from a consumer, set data-theme="dark" (or "light") on <html>. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brandy sample</title>
+  <link rel="stylesheet" href="./sample.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <nav class="header-nav">
+        <a href="#" class="plain-link brand">Brandy</a>
+        <a href="#" class="plain-link">Index</a>
+      </nav>
+      <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">&#9790;</button>
+    </div>
+  </header>
+  <main>
+    <article class="post">
+      <h1>Sample post</h1>
+      <time datetime="2026-01-01">January 1, 2026</time>
+      <div class="post-content">
+        <p>brandy is a pure Sass theme framework. This page uses only its CSS classes.</p>
+        <ul>
+          <li>Tokens in <code>scss/_palette.scss</code>, <code>_type.scss</code>, <code>_space.scss</code></li>
+          <li>Dark mode via <code>prefers-color-scheme</code> and <code>data-theme</code></li>
+        </ul>
+      </div>
+      <p class="post-tags"><span class="tag">#sample</span></p>
+    </article>
+  </main>
+  <footer><p>&copy; brandy</p></footer>
+</body>
+</html>
